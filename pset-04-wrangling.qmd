@@ -248,4 +248,14 @@ deaths <- request(deaths_url) |>
 
 ```{r}
 deaths |> 
+  group_by(state) |> 
+  summarise(total_deaths = sum(deaths, na.rm = TRUE), .groups = "drop") |>
+  arrange(desc(total_deaths)) |>
+  slice_head(n = 10) |> 
+  ggplot(aes(x = total_deaths, y = fct_reorder(state, total_deaths, .desc = T))) +
+  geom_col() +
+  labs(title = "Top 10 states by total COVID-19 deaths",
+       x = "total COVID-19 deaths",
+       y = "state") + 
+  theme_minimal()
 ```
