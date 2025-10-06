@@ -258,4 +258,6 @@ deaths |>
        x = "total COVID-19 deaths",
        y = "state") + 
   theme_minimal()
+
+## United States and NYC included in deaths and I was unable to remove these two non-state rows.
 ```
